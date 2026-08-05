@@ -1,0 +1,20 @@
+{
+  "name": "bases",
+  "version": "1.0.0",
+  "description": "Esta es una aplicacion de prueba para aprender node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eddy Talavera",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.5.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module"
+}

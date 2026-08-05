@@ -18,5 +18,5 @@
       "onFail": "download"
     }
   },
-  "type": "module"
+  "type": "commonjs"
 }

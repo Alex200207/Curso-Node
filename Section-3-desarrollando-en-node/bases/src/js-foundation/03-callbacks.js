@@ -9,7 +9,7 @@ const users = [
   },
 ];
 
-function getUserById(id, callback) {
+const  getUserById = (id, callback) =>{
   const user = users.find((u) => u.id === id);
 
   if (!user) {

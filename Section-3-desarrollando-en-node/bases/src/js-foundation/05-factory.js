@@ -4,12 +4,11 @@ que crean y retornan objetos.
 
 // objetivo: deberiamos ser capaces de tener dependencias en nuestro codigo
 
-const { v4: uuidv4 } = require('uuid');
-const getAge = require('get-age');
+const { getUUID, getAge } = require('../plugins');
 
 const buildPerson = ({ name, birthday }) => {
   return {
-    id: v4(),
+    id: getUUID(),
     name,
     birthday,
     age: getAge(birthday),

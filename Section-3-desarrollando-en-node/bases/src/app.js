@@ -12,4 +12,4 @@
 // });
 
 
-require('./js-foundation/04-factory')
+require('./js-foundation/05-factory')

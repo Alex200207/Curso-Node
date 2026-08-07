@@ -1,5 +1,5 @@
 /*Las factory functions son funciones 
-que crea una funcion
+que crean y retornan objetos.
 */
 
 // objetivo: deberiamos ser capaces de tener dependencias en nuestro codigo

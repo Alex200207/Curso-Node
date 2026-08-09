@@ -21,14 +21,22 @@
 //     });
 // };
 
+// const getPokemonById = (id) => {
+//   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+//   //retornar una promesa
+//   return fetch(url)
+//    .then((resp) => resp.json())
+//    .then((pokemon) => pokemon.name)
+// };
 
-const getPokemonById = (id) => {
+// async transforma valor de retorno a promesa
+const getPokemonById = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  //retornar una promesa
-  return fetch(url)
-   .then((resp) => resp.json())
-   .then((pokemon) => pokemon.name)
+
+  // el await es codigo bloqueante pues no permite avanzar hasta resolver
+  const resp = await fetch(url);
+  const pokemon = await resp.json();
+
+  return pokemon.name;
 };
-
-
 module.exports = getPokemonById;

@@ -19,9 +19,9 @@ const getPokemoById = require('./js-foundation/06-promises');
 //   console.log({ pokemon });
 // });
 
-getPokemoById(4)
+getPokemoById(1)
   .then((pokemon) => console.log(pokemon))
-  .catch((err) => console.log('Porfavor intente de nuevo'))
+  .catch((err) => console.log('Porfavor intente de nuevo',err))
   .finally(() => console.log('finalizado'));
 
 // ! Referencia a la funcion factory y uso

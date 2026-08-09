@@ -19,10 +19,16 @@ const getPokemoById = require('./js-foundation/06-promises');
 //   console.log({ pokemon });
 // });
 
-getPokemoById(1)
-  .then((pokemon) => console.log(pokemon))
-  .catch((err) => console.log('Porfavor intente de nuevo',err))
-  .finally(() => console.log('finalizado'));
+// getPokemoById(1)
+//   .then((pokemon) => console.log(pokemon))
+//   .catch((err) => console.log('Porfavor intente de nuevo',err))
+//   .finally(() => console.log('finalizado'));
+
+const { buildLogger } = require('./plugins');
+
+const logger = buildLogger('app.js');
+
+logger.log('Hola mundo');
 
 // ! Referencia a la funcion factory y uso
 //! se usa inyeccion de deps aqui

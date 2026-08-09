@@ -1,24 +1,19 @@
-/*Las factory functions son funciones 
-que crean y retornan objetos.
-*/
+/*En JavaScript, una Factory Function es simplemente una función cuya 
+responsabilidad es crear otra funcion. */
 
-// objetivo: deberiamos ser capaces de tener dependencias en nuestro codigo
+// esto ya nos sirve para enviar mis depedencias en arguntos
 
-const { getUUID, getAge } = require('../plugins');
-
-const buildPerson = ({ name, birthday }) => {
-  return {
-    id: getUUID(),
-    name,
-    birthday,
-    age: getAge(birthday),
+const buildMakePerson = ({ getUUID, getAge }) => {
+  return ({ name, birthday }) => {
+    return {
+      id: getUUID(),
+      name,
+      birthday,
+      age: getAge(birthday),
+    };
   };
 };
 
-const obj = {
-  name: 'eddy',
-  birthday: '2002-06-12',
+module.exports = {
+  buildMakePerson,
 };
-const john = buildPerson(obj);
-
-console.log(john);

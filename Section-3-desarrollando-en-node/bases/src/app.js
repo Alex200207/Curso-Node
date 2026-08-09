@@ -11,5 +11,14 @@
 //   console.log(user);
 // });
 
+// require('./js-foundation/05-factory')
 
-require('./js-foundation/05-factory')
+const { buildPerson } = require('./js-foundation/05-factory');
+
+const obj = {
+  name: 'eddy',
+  birthday: '2002-06-12',
+};
+const john = buildPerson(obj);
+
+console.log(john);

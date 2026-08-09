@@ -15,9 +15,14 @@
 
 const getPokemoById = require('./js-foundation/06-promises');
 
-getPokemoById(1, (pokemon) => {
-  console.log({ pokemon });
-});
+// getPokemoById(1, (pokemon) => {
+//   console.log({ pokemon });
+// });
+
+getPokemoById(4)
+  .then((pokemon) => console.log(pokemon))
+  .catch((err) => console.log('Porfavor intente de nuevo'))
+  .finally(() => console.log('finalizado'));
 
 // ! Referencia a la funcion factory y uso
 //! se usa inyeccion de deps aqui

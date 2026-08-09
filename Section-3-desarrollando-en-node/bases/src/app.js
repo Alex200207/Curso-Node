@@ -13,12 +13,20 @@
 
 // require('./js-foundation/05-factory')
 
-const { buildPerson } = require('./js-foundation/05-factory');
+const getPokemoById = require('./js-foundation/06-promises');
 
-const obj = {
-  name: 'eddy',
-  birthday: '2002-06-12',
-};
-const john = buildPerson(obj);
+getPokemoById(1, (pokemon) => {
+  console.log({ pokemon });
+});
 
-console.log(john);
+// ! Referencia a la funcion factory y uso
+//! se usa inyeccion de deps aqui
+// const { buildPerson } = require('./js-foundation/05-factory');
+
+// const obj = {
+//   name: 'eddy',
+//   birthday: '2002-06-12',
+// };
+// const john = buildPerson(obj);
+
+// console.log(john);

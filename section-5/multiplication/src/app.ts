@@ -2,13 +2,14 @@ import fs from 'fs';
 
 let ouputMessge = '';
 const base = 5;
+const limit = 100
 const header = `
 =============================
       Tabla del ${base} 
 =============================
 `;
 
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= limit; i++) {
   ouputMessge += `${base} x ${i} = ${base * i}\n `;
 }
 

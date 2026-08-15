@@ -29,6 +29,7 @@ const { buildLogger } = require('./plugins');
 const logger = buildLogger('app.js');
 
 logger.log('Hola mundo');
+logger.error('Esto es un error')
 
 // ! Referencia a la funcion factory y uso
 //! se usa inyeccion de deps aqui

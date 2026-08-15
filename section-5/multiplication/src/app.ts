@@ -1,26 +1,10 @@
-import fs from 'fs';
+// los argv son argumnets values 
 
-let ouputMessge = '';
-const base = 5;
-const limit = 100
-const header = `
-=============================
-      Tabla del ${base} 
-=============================
-`;
+console.log(process.argv)
 
-for (let i = 1; i <= limit; i++) {
-  ouputMessge += `${base} x ${i} = ${base * i}\n `;
-}
 
-ouputMessge = header + ouputMessge;
+// tomar los argumenos y valores
 
-console.log(ouputMessge);
+const [tsnode, app, ...args] = process.argv
 
-const ouputPath = `outputs`;
-
-// crear folder y los crea d forma recursiva
-fs.mkdirSync(ouputPath, {recursive: true})
-fs.writeFileSync(`${ouputPath}/tabla-${base}.txt`, ouputMessge);
-
-console.log('file created');
+console.log(args)

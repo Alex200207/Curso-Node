@@ -1,6 +1,6 @@
-/*En JavaScript, una Factory Function es simplemente una función cuya 
-responsabilidad es crear otra funcion. */
-
+/*
+Una Factory Function es una función cuya responsabilidad es crear y devolver algo, normalmente un objeto, sin necesidad de usar new.
+ */
 // esto ya nos sirve para enviar mis depedencias en arguntos
 
 const buildMakePerson = ({ getUUID, getAge }) => {

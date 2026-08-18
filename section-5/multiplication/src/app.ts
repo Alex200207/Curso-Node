@@ -1,10 +1,5 @@
-// los argv son argumnets values 
+// los argv son argumnets values
 
-console.log(process.argv)
+import { yarg } from './plugins/yargs.plugin.js';
 
-
-// tomar los argumenos y valores
-
-const [tsnode, app, ...args] = process.argv
-
-console.log(args)
+console.log(yarg);

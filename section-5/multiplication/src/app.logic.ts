@@ -1,12 +1,15 @@
 import fs from 'fs';
+import { yarg } from './config/plugins/args.plugin.js';
+
+const { b, l, show } = yarg;
 
 let ouputMessge = '';
-const base = 5;
-const limit = 100
+const base = b;
+const limit = l;
 const header = `
 =============================
       Tabla del ${base} 
-=============================
+=============================\n
 `;
 
 for (let i = 1; i <= limit; i++) {
@@ -15,12 +18,14 @@ for (let i = 1; i <= limit; i++) {
 
 ouputMessge = header + ouputMessge;
 
-console.log(ouputMessge);
+if (show) {
+  console.log(ouputMessge);
+}
 
 const ouputPath = `outputs`;
 
 // crear folder y los crea d forma recursiva
-fs.mkdirSync(ouputPath, {recursive: true})
+fs.mkdirSync(ouputPath, { recursive: true });
 fs.writeFileSync(`${ouputPath}/tabla-${base}.txt`, ouputMessge);
 
 console.log('file created');

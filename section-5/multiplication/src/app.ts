@@ -1,6 +1,6 @@
 // los argv son argumnets values
 
-// import { yarg } from './plugins/yargs.plugin.js';
+import { yarg } from './config/plugins/args.plugin.js';
 
 // console.log(yarg);
 
@@ -15,5 +15,7 @@
 
 
 async function main() {
-    console.log('main ejecutado')
+
+
+    console.log(yarg)
 }

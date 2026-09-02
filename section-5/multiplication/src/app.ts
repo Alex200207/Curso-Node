@@ -14,10 +14,12 @@ import { ServerApp } from './presentation/server-app.js';
 
 // punto de entrada
 async function main() {
-  const { b, l, s } = yarg;
+  const { b, l, s, n, d } = yarg;
   ServerApp.run({
     base: b,
     limit: l,
     show: s,
+    destinations: d,
+    name: n,
   });
 }

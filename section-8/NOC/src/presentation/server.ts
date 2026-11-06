@@ -18,7 +18,10 @@ export class ServerApp {
 
     // lo llamamos desde el cron service
     CronService.createJob('*/3 * * * * *', () => {
-      new CheckService().execute('http://localhost:3000');
+      new CheckService(
+        () => console.info('Service is up'),
+        (error: string) => console.error(error),
+      ).execute('http://localhost:3000');
     });
   }
 }

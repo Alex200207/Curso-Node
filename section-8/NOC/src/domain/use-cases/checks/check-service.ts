@@ -2,14 +2,24 @@ interface CheckServiceUseCase {
   execute(url: string): Promise<boolean>;
 }
 
+type SuccessCallback = () => void;
+type ErrorCallback = (error: string) => void;
+
 export class CheckService implements CheckServiceUseCase {
+  //inyeccion de dependencias, para que la clase no dependa de otras clases, sino de interfaces
+  constructor(
+    // con readonly impedimos que se pueda modificar el valor de las propiedades
+    //private es para que solo se pueda acceder a las propiedades desde dentro de la clase
+    private readonly successCallback: SuccessCallback,
+    private readonly errorCallback: ErrorCallback,
+  ) {}
   async execute(url: string): Promise<boolean> {
     try {
       const req = await fetch(url);
-      req.ok ? console.info('Service is up') : console.info('Service is down');
+      req.ok ? this.successCallback() : this.errorCallback('Service is down');
       return req.ok;
     } catch (err) {
-      console.error('Error occurred while checking service status', err);
+      this.errorCallback('Error occurred while checking service status');
       return false;
     }
   }

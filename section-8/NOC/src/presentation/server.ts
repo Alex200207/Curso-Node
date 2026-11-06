@@ -18,7 +18,7 @@ export class ServerApp {
 
     // lo llamamos desde el cron service
     CronService.createJob('*/3 * * * * *', () => {
-      new CheckService().execute('https://www.google.com');
+      new CheckService().execute('http://localhost:3000');
     });
   }
 }

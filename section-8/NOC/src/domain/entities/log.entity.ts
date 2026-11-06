@@ -21,3 +21,4 @@ export class LogEntity {
     this.createdAt = new Date();
   }
 }
+// esto nos permitira crear instancias y gobernar la aplicacion

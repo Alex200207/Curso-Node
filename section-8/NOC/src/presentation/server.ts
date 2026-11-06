@@ -1,5 +1,6 @@
 import { CronJob } from 'cron';
 import { CronService } from './cron/cron-service';
+import { CheckService } from '../domain/use-cases/checks/check-service';
 
 export class ServerApp {
   // la palabra public esta de mas pxq a menos que pongamos
@@ -17,8 +18,7 @@ export class ServerApp {
 
     // lo llamamos desde el cron service
     CronService.createJob('*/3 * * * * *', () => {
-      const date = new Date();
-      console.log('3 second', date);
+      new CheckService().execute('https://www.google.com');
     });
   }
 }

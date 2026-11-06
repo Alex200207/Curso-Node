@@ -1,4 +1,5 @@
 import { CronJob } from 'cron';
+import { CronService } from './cron/cron-service';
 
 export class ServerApp {
   // la palabra public esta de mas pxq a menos que pongamos
@@ -8,10 +9,16 @@ export class ServerApp {
   public static start() {
     console.log('Server is running...');
     // ejecucion cada 3 segundos
-    const job = new CronJob('*/3 * * * * *', () => {
+    // const job = new CronJob('*/3 * * * * *', () => {
+    //   const date = new Date();
+    //   console.log('3 second', date);
+    // });
+    // job.start();
+
+    // lo llamamos desde el cron service
+    CronService.createJob('*/3 * * * * *', () => {
       const date = new Date();
       console.log('3 second', date);
     });
-    job.start();
   }
 }

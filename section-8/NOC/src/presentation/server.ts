@@ -1,6 +1,14 @@
 import { CronJob } from 'cron';
 import { CronService } from './cron/cron-service';
 import { CheckService } from '../domain/use-cases/checks/check-service';
+import { LogRepositoryImpl } from '../infrastructure/repository/log-impl.repository';
+import { FileSystemDataSource } from '../infrastructure/datasources/file-system.datasource';
+
+// instancias de las implementacion
+
+const fileSystemLogRepository = new LogRepositoryImpl(
+  new FileSystemDataSource(),
+);
 
 export class ServerApp {
   // la palabra public esta de mas pxq a menos que pongamos
@@ -21,6 +29,9 @@ export class ServerApp {
       new CheckService(
         () => console.info('Service is up'),
         (error: string) => console.error(error),
+        // undefined,
+        // undefined,
+        fileSystemLogRepository,
       ).execute('http://localhost:3000');
     });
   }

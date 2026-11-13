@@ -61,7 +61,42 @@ export class FileSystemDataSource implements LogDataSource {
       fs.appendFileSync(this.highLogsPath, logAsJson);
     }
   }
-  getLogs(severityLevel: LogLevel): Promise<LogEntity[]> {
-    throw new Error('Method not implemented.');
+
+  // 'private': Este método es de uso interno; solo puede ser llamado dentro de la misma clase (ej. desde un método público como 'getLogs').
+  // 'getLogFromFile': Nombre de la función flecha (arrow function).
+  // '(path: string)': Recibe como parámetro la ruta física del archivo donde están guardados los logs (ej. 'logs/logs-low.log').
+  // ': LogEntity[]': Indica el tipo de retorno. Promete devolver un arreglo (array) de instancias de 'LogEntity'.
+  private getLogFromFile = (path: string): LogEntity[] => {
+    // 1. LECTURA DEL ARCHIVO:
+    // Usa el módulo 'fs' (File System) de Node.js para leer todo el contenido del archivo de forma síncrona (bloqueante).
+    // 'utf-8' le indica que debe leerlo como texto legible y no como un Buffer de bytes binarios.
+    // El resultado en 'content' es un único string gigante con todos los logs separados por saltos de línea.
+    const content = fs.readFileSync(path, 'utf-8');
+
+    // 2. TRANSFORMACIÓN DE TEXTO A ENTIDADES:
+    // Primero, 'content.split('\n')' corta ese string gigante cada vez que encuentra un salto de línea (\n),
+    // convirtiéndolo en un arreglo de strings (donde cada elemento es una línea del archivo en formato JSON).
+    // Luego, '.map(...)' recorre cada línea de texto y se la pasa al método estático 'LogEntity.fromJson(log)',
+    // transformando cada string JSON en una instancia real de 'LogEntity'.
+    const stringLogs = content
+      .split('\n')
+      .map((log) => LogEntity.fromJson(log));
+
+    // 3. RETORNO:
+    // Devuelve el arreglo ya convertido con todos los objetos LogEntity listos para ser usados por la aplicación.
+    return stringLogs;
+  };
+  async getLogs(severityLevel: LogLevel): Promise<LogEntity[]> {
+    switch (severityLevel) {
+      case LogLevel.low:
+        return this.getLogFromFile(this.allLogsPath);
+
+      case LogLevel.medium:
+        return this.getLogFromFile(this.mediumLogsPath);
+      case LogLevel.high:
+        return this.getLogFromFile(this.highLogsPath);
+      default:
+        throw new Error(`${severityLevel} not implement`);
+    }
   }
 }
